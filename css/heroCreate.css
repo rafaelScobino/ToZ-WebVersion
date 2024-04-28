@@ -1,0 +1,89 @@
+html{
+    color: #FF914D ;
+    background-color: black;
+}
+
+/* Custom Font */
+.medievalsharp-regular {
+    font-family: "MedievalSharp", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  
+*{
+    color: #FF914D ;
+    font-size:x-large;
+    /* border: 1px solid white; */
+}
+
+#titleTextsDiv{
+    text-align: center;
+    justify-content: center;
+}
+
+#heroCreateMenu{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10%;
+    align-items:center;
+    justify-content: center;
+}
+
+#nameInputDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nameInput{
+    color: #00FFB6;
+    text-align: center;
+    background-color: black;
+}
+
+#heroStatsDiv div{
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+
+#heroStatsDiv span{
+    color: #00FFB6;
+    text-align: center;
+
+}
+
+#heroImgDiv img{
+    
+}
+
+#heroClassDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+#submitClimb{
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    width: 100%;
+    margin-top: 2%;
+}
+
+#climbButton{
+    height: 100%;
+    width: 100%;
+
+    color: #FF914D;
+    background-color: #191970 ;
+
+    aspect-ratio: 3/1;
+}
+
+#climbButton span{
+    font-size: xx-large;
+}
+
