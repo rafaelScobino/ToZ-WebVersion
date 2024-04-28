@@ -14,22 +14,116 @@
         <source src="./assets/sounds/" type="audio/ogg">
       Your browser does not support the audio element.
     </audio>
-
     <header>
-        <div>
-            <a href="./index.html" id="menuLink"><button id="climbButton" class="medievalsharp-regular" ><span>MAIN MENU</span></button></a>
-            <a href="./heroCreate.html" id="restartLink"><button id="climbButton" class="medievalsharp-regular" ><span>RESTART</span></button></a>
+        <div id="headerButtons">
+            <a href="./index.html" id="menuLink"><button id="menuButton" class="medievalsharp-regular" ><span>MAIN MENU</span></button></a>
+            <a href="./heroCreate.html" id="restartLink"><button id="restartButton" class="medievalsharp-regular" ><span>RESTART</span></button></a>
+        </div>
+        <div id="towerLevelDiv">
+            <h1>Tower Level</h1>
         </div>
     </header>
-    <section>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>   
+    <section id="gameInfos">
+        <div class="borderOrange" id="towerInfo">
+            <div>
+                <h3>CURRENT TURN :</h3>
+                <h3 class="blueColor">20</h3>
+            </div>
+            <div>
+                <h3>TOWER LEVEL :</h3>
+                <h3 class="blueColor">10</h3>
+            </div>
+        </div>
+        <div class="borderOrange" id="contestantInfo">
+            <div id="heroNameDiv"><h3 class="blueColor" id="heroName">Hero Name</h3></div>
+            <div class="" id="enemyRollDiv">
+                <h3>ENEMY ROLL :</h3>
+                <h3  id="enemyRoll" class="blueColor">MGKROLL</h3>
+            </div>
+            <div><h3 id="enemyName">ENEMY NAME</h3></div>
+        </div>  
     </section>
+    <section id="battleGui">
+        <div id="levelDisplay" class="levelBg">
+            <div class="contestantBox" id="heroBox">
+                <img id="heroImg" class="contestantImg" src="./assets/Contestants/Hero/fighter/idle.gif" alt="">
+                <img id="heroAction" class="actionImg" src="./assets/ActionsDices/dice10.png" alt="">
+            </div>
+            <div class="contestantBox" id="enemyBox">
+                <img id="enemyImg" class="contestantImg" src="./assets/Contestants/Enemies/evilSlime/Slime2.gif" alt="">
+                <img id="enemyAction" class="actionImg" src="./assets/ActionsDices/dice0.png" alt="">
+            </div>
+        </div>
+        <div id="contestantStatsInfoActions">
+            <div class="contestantStatsBox borderOrange"> 
+                <div class="statsBox">
+                    <h3>LIFE:</h3>
+                    <h3 class="blueColor">80</h3>
+                </div>
+                <div class="statsBox">
+                    <h3>STRENGTH :</h3>
+                    <h3 class="blueColor">8</h3>
+                </div>
+                <div class="statsBox">
+                    <h3>SKILL :</h3>
+                    <h3 class="blueColor">2</h3>
+                </div>
+                <div class="statsBox">
+                    <h3>MAGICKA :</h3>
+                    <h3 class="blueColor">0</h3>
+                </div>
+            </div>
+            <div class="contestantStatsBox borderOrange">
+                <div class="statsBox">
+                    <h3>LIFE:</h3>
+                    <h3 class="blueColor">50</h3>
+                </div>
+                <div class="statsBox">
+                    <h3>STRENGTH :</h3>
+                    <h3 class="blueColor">20</h3>
+                </div>
+                <div class="statsBox">
+                    <h3>SKILL :</h3>
+                    <h3 class="blueColor">30</h3>
+                </div>
+                <div class="statsBox">
+                    <h3>MAGICKA :</h3>
+                    <h3 class="blueColor">17</h3>
+                </div>
+            </div>
+            <div id="actionButtons" class="contestantStatsBox">
+                <button><span>STRENGTH</span></button>
+                <button><span>SKILL</span></button>
+                <button><span>MAGICKA</span></button>
+                <button><span>HEAL</span></button>
+            </div>
+        </div>
+        <div id="gameInventory" class="borderOrange">
+            <img src="./assets/ActionsDices/block.gif" alt="">
+            <h3 class="blueColor">Inventory - NOT IMPLEMENTED</h3>
+            <img src="./assets/ActionsDices/block.gif" alt="">
+        </div>
+        <div id="gameLog" class="borderOrange">
+            <p>This is the game log</p>
+            <p>-----------------------------</p>
+            <p>Here you will see the actions and other infos</p>
+            <p>your action</p>
+            <p>and enemy actions</p>
+            <p>-----------------------------</p>
+            <p>enemy damage and such</p>
+            <p>Lorem ipsum</p>
+            <p>-----------------------------</p>
+            <p>This is the game log</p>
+            <p>-----------------------------</p>
+            <p>Here you will see the actions and other infos</p>
+            <p>your action</p>
+            <p>and enemy actions</p>
+            <p>-----------------------------</p>
+            <p>enemy damage and such</p>
+            <p>Lorem ipsum</p>
+            <p>-----------------------------</p>
+        </div> 
+    
     <footer>
 
     </footer>
