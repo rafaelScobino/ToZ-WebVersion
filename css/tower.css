@@ -31,7 +31,7 @@ html{
 header{
     display: flex;
     align-items: center;
-    gap: 20%;
+    gap: 10%;
     height: 70px;
 }
 
@@ -118,10 +118,37 @@ header{
     max-height: 600px;
 }
 
-.levelBg{
+.bg1{
+    background-image: url(./../assets/TowerLevels/entrance.gif);
+}
+
+.bg2{
+    background-image: url(./../assets/TowerLevels/laPalisade.gif);
+}
+
+.bg3{
+    background-image: url(./../assets/TowerLevels/top.gif);
+}
+
+.bg4{
     background-image: url(./../assets/TowerLevels/tutorialpath.gif);
+}
+
+.levelBg{
     background-size: 100% 100%;
     background-position: center;
+}
+
+#bgSelector{
+    border: 1px solid #FF914D;
+    color: #00FFB6;
+    background-color: black;
+}
+
+.bgOpt{
+    border: 1px solid #FF914D;
+    background-color: black;
+    color: #00FFB6;
 }
 
 .contestantImg{

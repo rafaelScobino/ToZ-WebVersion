@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=MedievalSharp&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/tower.css">
+    <script src="./javascript/towerBattle.js" defer></script>
 </head>
 <body class="medievalsharp-regular">
     <audio  repeat autoplay>
@@ -22,29 +23,40 @@
         <div id="towerLevelDiv">
             <h1>Tower Level</h1>
         </div>
+        <div>
+            <select onchange="changeLevelBg()" name="" id="bgSelector">
+                <option class="bgOpt" value="0">No BG</option>
+                <option class="bgOpt" value="1">Main Corridor</option>
+                <option class="bgOpt" value="2">La Palisade</option>
+                <option class="bgOpt" value="3">Tower Top</option>
+                <option class="bgOpt" value="4">Tower Entrance</option>
+            </select>
+        </div>
     </header>
     <section id="gameInfos">
         <div class="borderOrange" id="towerInfo">
             <div>
                 <h3>CURRENT TURN :</h3>
-                <h3 class="blueColor">20</h3>
+                <h3 class="blueColor">0</h3>
             </div>
             <div>
                 <h3>TOWER LEVEL :</h3>
-                <h3 class="blueColor">10</h3>
+                <h3 class="blueColor">0</h3>
             </div>
         </div>
         <div class="borderOrange" id="contestantInfo">
-            <div id="heroNameDiv"><h3 class="blueColor" id="heroName">Hero Name</h3></div>
+            <div id="heroNameDiv">
+                <h3 class="blueColor" id="heroName">Hero Name</h3>
+            </div>
             <div class="" id="enemyRollDiv">
                 <h3>ENEMY ROLL :</h3>
                 <h3  id="enemyRoll" class="blueColor">MGKROLL</h3>
             </div>
-            <div><h3 id="enemyName">ENEMY NAME</h3></div>
+            <div><h3 class="blueColor" id="enemyName">Placement Slime</h3></div>
         </div>  
     </section>
     <section id="battleGui">
-        <div id="levelDisplay" class="levelBg">
+        <div id="levelDisplay" class=" levelBg">
             <div class="contestantBox" id="heroBox">
                 <img id="heroImg" class="contestantImg" src="./assets/Contestants/Hero/fighter/idle.gif" alt="">
                 <img id="heroAction" class="actionImg" src="./assets/ActionsDices/dice10.png" alt="">
@@ -55,40 +67,40 @@
             </div>
         </div>
         <div id="contestantStatsInfoActions">
-            <div class="contestantStatsBox borderOrange"> 
+            <div id="heroStats" class="contestantStatsBox borderOrange"> 
                 <div class="statsBox">
                     <h3>LIFE:</h3>
-                    <h3 class="blueColor">80</h3>
+                    <h3 id="heroLife" class="blueColor">0</h3>
                 </div>
                 <div class="statsBox">
                     <h3>STRENGTH :</h3>
-                    <h3 class="blueColor">8</h3>
+                    <h3 id="heroStrength" class="blueColor">0</h3>
                 </div>
                 <div class="statsBox">
                     <h3>SKILL :</h3>
-                    <h3 class="blueColor">2</h3>
+                    <h3 id="heroSkill" class="blueColor">0</h3>
                 </div>
                 <div class="statsBox">
                     <h3>MAGICKA :</h3>
-                    <h3 class="blueColor">0</h3>
+                    <h3 id="heroMagicka" class="blueColor">0</h3>
                 </div>
             </div>
-            <div class="contestantStatsBox borderOrange">
+            <div id="enemyStats" class="contestantStatsBox borderOrange">
                 <div class="statsBox">
                     <h3>LIFE:</h3>
-                    <h3 class="blueColor">50</h3>
+                    <h3 class="blueColor">60</h3>
                 </div>
                 <div class="statsBox">
                     <h3>STRENGTH :</h3>
-                    <h3 class="blueColor">20</h3>
+                    <h3 class="blueColor">5</h3>
                 </div>
                 <div class="statsBox">
                     <h3>SKILL :</h3>
-                    <h3 class="blueColor">30</h3>
+                    <h3 class="blueColor">5</h3>
                 </div>
                 <div class="statsBox">
                     <h3>MAGICKA :</h3>
-                    <h3 class="blueColor">17</h3>
+                    <h3 class="blueColor">2</h3>
                 </div>
             </div>
             <div id="actionButtons" class="contestantStatsBox">
