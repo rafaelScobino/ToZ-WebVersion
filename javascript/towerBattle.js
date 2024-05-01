@@ -21,8 +21,15 @@ const eStrength = document.getElementById("enemyStrength")
 const eSkill = document.getElementById("enemySkill")
 const eMagicka = document.getElementById("enemyMagicka")
 
+//Setting Action Type
+// 0-> Strength | 1-> Skill | 2->Magicka | 3-> Heal | 4-> Inventory
+var aType
+
 //Creating request JSON
-const battleInfo = {
+function createJson(aType){
+return battleInfo = {
+
+        action: aType,
 
         hLife: parseInt(hLife.innerText),
         hStrength: parseInt(hStrength.innerText),
@@ -38,52 +45,84 @@ const battleInfo = {
         turn: parseInt(turn.innerText),
         tLevel: parseInt(tLevel.innerText)
 }
+}
+
+function updateBattle(data){
+
+    eNextAtk.innerText =  data['nextRoll']
+
+}
+
 
 function strAtk() {
+    var aType = 0;
+    var jsonData = createJson(aType);
     fetch('/battle', {
         method: 'POST',
-        body: JSON.stringify(battleInfo)
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData)
     })
     .then(response => {
-        return response.text()
+        return response.json();
     })
-    .then(data=>{
-        console.log(data)
-    })
+    .then(data => {
+        updateBattle(data)
+        console.log(data);
+    });
 }
 
 function sklAtk() {
+    aType = 1;
+    var jsonData = createJson(aType);
     fetch('/battle', {
-        method: 'POST'
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData)
     })
     .then(response => {
-        return response.text()
+        return response.text();
     })
-    .then(data=>{
-        console.log(data)
-    })
+    .then(data => {
+        console.log(data);
+    });
 }
 
 function mgkAtk() {
+    aType = 2;
+    var jsonData = createJson(aType);
     fetch('/battle', {
-        method: 'POST'
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData)
     })
     .then(response => {
-        return response.text()
+        return response.text();
     })
-    .then(data=>{
-        console.log(data)
-    })
+    .then(data => {
+        console.log(data);
+    });
 }
 
 function heal() {
+    aType = 3;
+    var jsonData = createJson(aType);
     fetch('/battle', {
-        method: 'POST'
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData)
     })
     .then(response => {
-        return response.text()
+        return response.text();
     })
-    .then(data=>{
-        console.log(data)
-    })
+    .then(data => {
+        console.log(data);
+    });
 }
