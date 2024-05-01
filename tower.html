@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=MedievalSharp&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/tower.css">
     <script src="./javascript/towerBattle.js" defer></script>
+    <script src="./javascript/tbLoadMisc.js" defer></script>
 </head>
 <body class="medievalsharp-regular">
     <audio  repeat autoplay>
@@ -37,11 +38,11 @@
         <div class="borderOrange" id="towerInfo">
             <div>
                 <h3>CURRENT TURN :</h3>
-                <h3 class="blueColor">0</h3>
+                <h3 id="turnCounter" class="blueColor">0</h3>
             </div>
             <div>
                 <h3>TOWER LEVEL :</h3>
-                <h3 class="blueColor">0</h3>
+                <h3 id="tLevel" class="blueColor">0</h3>
             </div>
         </div>
         <div class="borderOrange" id="contestantInfo">
@@ -52,7 +53,9 @@
                 <h3>ENEMY ROLL :</h3>
                 <h3  id="enemyRoll" class="blueColor">MGKROLL</h3>
             </div>
-            <div><h3 class="blueColor" id="enemyName">Placement Slime</h3></div>
+            <div>
+                <h3 class="blueColor" id="enemyName">Placement Slime</h3>
+            </div>
         </div>  
     </section>
     <section id="battleGui">
@@ -88,26 +91,26 @@
             <div id="enemyStats" class="contestantStatsBox borderOrange">
                 <div class="statsBox">
                     <h3>LIFE:</h3>
-                    <h3 class="blueColor">60</h3>
+                    <h3 id="enemyLife" class="blueColor">60</h3>
                 </div>
                 <div class="statsBox">
                     <h3>STRENGTH :</h3>
-                    <h3 class="blueColor">5</h3>
+                    <h3 id="enemyStrength" class="blueColor">5</h3>
                 </div>
                 <div class="statsBox">
                     <h3>SKILL :</h3>
-                    <h3 class="blueColor">5</h3>
+                    <h3 id="enemySkill" class="blueColor">5</h3>
                 </div>
                 <div class="statsBox">
                     <h3>MAGICKA :</h3>
-                    <h3 class="blueColor">2</h3>
+                    <h3 id="enemyMagicka" class="blueColor">2</h3>
                 </div>
             </div>
             <div id="actionButtons" class="contestantStatsBox">
                 <button onclick="strAtk()" ><span>STRENGTH</span></button>
-                <button><span>SKILL</span></button>
-                <button><span>MAGICKA</span></button>
-                <button><span>HEAL</span></button>
+                <button onclick="sklAtk()"><span>SKILL</span></button>
+                <button onclick="mgkAtk()"><span>MAGICKA</span></button>
+                <button onclick="heal()"><span>HEAL</span></button>
             </div>
         </div>
         <div id="gameInventory" class="borderOrange">

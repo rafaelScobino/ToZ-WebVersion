@@ -1,78 +1,89 @@
-// Retrieving URL query params
-const urlParams = new URLSearchParams(window.location.search)
-const encodedData = urlParams.get('data')
-
-const data = encodedData.split('|')
-
-// Defining hero info and stats
-const heroNameData = data[0]
-const heroLifeData = data[1]
-const heroStrengthData = data[2]
-const heroSkillData = data[3]
-const heroMagickaData = data[4]
-const heroImgData = data[5]
-
-
 //Getting html elements
-const heroName = document.getElementById('heroName')
-const heroImg = document.getElementById("heroImg")
-const heroLife = document.getElementById("heroLife")
-const heroStrength = document.getElementById("heroStrength")
-const heroSkill = document.getElementById("heroSkill")
-const heroMagicka = document.getElementById("heroMagicka")
 
-const levelBg = document.getElementById('levelDisplay')
-var bgSelect = document.getElementById('bgSelector')
+//Hero Elements
+const hName = document.getElementById('heroName')
+const hImg = document.getElementById("heroImg")
+const hLife = document.getElementById("heroLife")
+const hStrength = document.getElementById("heroStrength")
+const hSkill = document.getElementById("heroSkill")
+const hMagicka = document.getElementById("heroMagicka")
 
-function loadHero(){ 
-    heroName.innerText = heroNameData
-    heroLife.innerText = heroLifeData
-    heroStrength.innerText = heroStrengthData
-    heroSkill.innerText = heroSkillData
-    heroMagicka.innerText = heroMagickaData
-    heroImg.setAttribute('src',heroImgData)
-}
+//Tower Elements
+const eNextAtk = document.getElementById("enemyRoll")
+const turn = document.getElementById("turnCounter")
+const tLevel = document.getElementById("tLevel")
 
-document.addEventListener(window.onload = loadHero())
+//Enemy elements
+const eName = document.getElementById('enemyName')
+const eImg = document.getElementById("enemyImg")
+const eLife = document.getElementById("enemyLife")
+const eStrength = document.getElementById("enemyStrength")
+const eSkill = document.getElementById("enemySkill")
+const eMagicka = document.getElementById("enemyMagicka")
 
-function changeLevelBg(){
-    let bg = ''
-    switch(parseInt(bgSelect.value)){
-        case 1:
-            bg = 'bg1'
-            break;
-        case 2:
-            bg = 'bg2'
-            break;
-        case 3:
-            bg = 'bg3'
-            break;
-        case 4:
-            bg = 'bg4'
-            break;
-        default:
-            bg=''
-            break;
-    }
+//Creating request JSON
+const battleInfo = {
 
-    levelBg.setAttribute('class',`levelBg ${bg}`)
+        hLife: parseInt(hLife.innerText),
+        hStrength: parseInt(hStrength.innerText),
+        hSkill: parseInt(hSkill.innerText),
+        hMagicka:parseInt(hMagicka.innerText),
 
+        eLife: parseInt(eLife.innerText),
+        eStrength: parseInt(eStrength.innerText),
+        eSkill: parseInt(eSkill.innerText),
+        eMagicka:parseInt(eMagicka.innerText),
+
+        eNextAtk: eNextAtk.innerText,
+        turn: parseInt(turn.innerText),
+        tLevel: parseInt(tLevel.innerText)
 }
 
 function strAtk() {
     fetch('/battle', {
+        method: 'POST',
+        body: JSON.stringify(battleInfo)
+    })
+    .then(response => {
+        return response.text()
+    })
+    .then(data=>{
+        console.log(data)
+    })
+}
+
+function sklAtk() {
+    fetch('/battle', {
         method: 'POST'
     })
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.text();
+        return response.text()
     })
-    .then(data => {
-        console.log(data);
+    .then(data=>{
+        console.log(data)
     })
-    .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-    });
+}
+
+function mgkAtk() {
+    fetch('/battle', {
+        method: 'POST'
+    })
+    .then(response => {
+        return response.text()
+    })
+    .then(data=>{
+        console.log(data)
+    })
+}
+
+function heal() {
+    fetch('/battle', {
+        method: 'POST'
+    })
+    .then(response => {
+        return response.text()
+    })
+    .then(data=>{
+        console.log(data)
+    })
 }
