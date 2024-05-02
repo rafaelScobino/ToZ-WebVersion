@@ -1,6 +1,6 @@
 //Getting html elements
 
-//Hero Elements
+    //Hero Elements
 const hName = document.getElementById('heroName')
 const hImg = document.getElementById("heroImg")
 const hLife = document.getElementById("heroLife")
@@ -8,18 +8,41 @@ const hStrength = document.getElementById("heroStrength")
 const hSkill = document.getElementById("heroSkill")
 const hMagicka = document.getElementById("heroMagicka")
 
-//Tower Elements
+    //Tower Elements
 const eNextAtk = document.getElementById("enemyRoll")
 const turn = document.getElementById("turnCounter")
 const tLevel = document.getElementById("tLevel")
 
-//Enemy elements
+    //Enemy elements
 const eName = document.getElementById('enemyName')
 const eImg = document.getElementById("enemyImg")
 const eLife = document.getElementById("enemyLife")
 const eStrength = document.getElementById("enemyStrength")
 const eSkill = document.getElementById("enemySkill")
 const eMagicka = document.getElementById("enemyMagicka")
+
+//Setting Enemy first Attack Type
+function updateFirstAtk(data){ eNextAtk.innerText =  data['nextRoll'] }
+
+function setFirstAtk() {
+    var aType = 0;
+    var jsonData = createJson(aType);
+    fetch('/battle', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData)
+    })
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        updateFirstAtk(data)
+        console.log(data);
+    });}
+
+document.addEventListener(window.onload = setFirstAtk(),"")
 
 //Setting Action Type
 // 0-> Strength | 1-> Skill | 2->Magicka | 3-> Heal | 4-> Inventory
@@ -47,12 +70,7 @@ return battleInfo = {
 }
 }
 
-function updateBattle(data){
-
-    eNextAtk.innerText =  data['nextRoll']
-
-}
-
+function updateBattle(data){ eNextAtk.innerText =  data['nextRoll'] }
 
 function strAtk() {
     var aType = 0;
@@ -84,9 +102,10 @@ function sklAtk() {
         body: JSON.stringify(jsonData)
     })
     .then(response => {
-        return response.text();
+        return response.json();
     })
     .then(data => {
+        updateBattle(data)
         console.log(data);
     });
 }
@@ -102,9 +121,10 @@ function mgkAtk() {
         body: JSON.stringify(jsonData)
     })
     .then(response => {
-        return response.text();
+        return response.json();
     })
     .then(data => {
+        updateBattle(data)
         console.log(data);
     });
 }
@@ -120,9 +140,10 @@ function heal() {
         body: JSON.stringify(jsonData)
     })
     .then(response => {
-        return response.text();
+        return response.json();
     })
     .then(data => {
+        updateBattle(data)
         console.log(data);
     });
 }

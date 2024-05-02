@@ -1,8 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 import battle
 
-
-
 app = Flask(__name__,static_folder="./../../TowerOfZanas - Web Version")
 
 @app.route('/TowerOfZanas - Web Version/<path:filename>')
@@ -33,11 +31,6 @@ def battle_route():
         
     return jsonify(battle.request_handler(action,h_life,h_str,h_skl,h_mgk,e_life,e_str,e_skl,e_mgk,e_next_roll,turn,t_level))
         
-
-
-
-
-
 if __name__ =='__main__':
     app.run()
     

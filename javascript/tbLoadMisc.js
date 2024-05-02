@@ -33,7 +33,7 @@ function loadHero(){
     heroImg.setAttribute('src',heroImgData)
 }
 
-document.addEventListener(window.onload = loadHero())
+document.addEventListener(window.onload = loadHero(),"")
 
 function changeLevelBg(){
     let bg = ''
