@@ -94,7 +94,7 @@ function gameOver(data){
     }
 }
 
-async function damageVQ(value, cLife) {
+async function damageVC(value, cLife) {
     for (let i = 0; i <= value - 1; i++) {
         await new Promise(resolve => {
             setTimeout(() => {
@@ -119,9 +119,9 @@ function updateBattle(data){
     turn.innerText = parseInt(turn.innerText) + 1
 
     if(data['loser'] == 'h'){
-        damageVQ(data['damageValue'],hLife)
+        damageVC(data['damageValue'],hLife)
     }else{
-        damageVQ(data['damageValue'],eLife)
+        damageVC(data['damageValue'],eLife)
     }
 }
 
