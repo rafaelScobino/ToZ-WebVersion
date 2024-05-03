@@ -38,14 +38,14 @@ def e_next_roll_type(e_life,e_str,e_skl,e_mgk):
     return roll_type
 
 #opt 1 -> str x str | opt 2 -> str x skl | opt 3 -> str x mgk
-def str_action(opt,h_str,h_skl,h_mgk,e_str,e_skl,e_mgk):
+def str_action(opt,h_str_o,h_skl_o,h_mgk_o,e_str_o,e_skl_o,e_mgk_o):
     print('str works')
     h_roll = dice_roll(1,10)
     e_roll = dice_roll(1,10)
-    h_str = h_str + h_roll
-    e_mgk = 10 + e_skl + e_str
-    e_str = e_str + e_roll
-    e_skl = e_skl + e_roll
+    h_str = h_str_o + h_roll
+    e_mgk = 10 + e_skl_o + e_str_o
+    e_str = e_str_o + e_roll
+    e_skl = e_skl_o + e_roll
     damage_value = 0
     loser = ''
     
@@ -66,6 +66,7 @@ def str_action(opt,h_str,h_skl,h_mgk,e_str,e_skl,e_mgk):
             loser = 'h'
             
     elif(opt == 3):
+        e_roll = 'm'
         if(h_str > e_mgk):
             damage_value = h_str - e_mgk
             loser = 'e'
@@ -76,17 +77,20 @@ def str_action(opt,h_str,h_skl,h_mgk,e_str,e_skl,e_mgk):
     else:
         damage_value = 0
         
+    if(e_str_o == 0 and e_skl_o == 0):
+        e_roll = 'h'
+        
     return loser , damage_value, h_roll, e_roll
 
 #opt 1 -> skl x skl | opt 2 -> skl x str | opt 3 -> skl x mgk
-def skl_action(opt,h_str,h_skl,h_mgk,e_str,e_skl,e_mgk):
+def skl_action(opt,h_str_o,h_skl_o,h_mgk_o,e_str_o,e_skl_o,e_mgk_o):
     print('skl works')
     h_roll = dice_roll(1,10)
     e_roll = dice_roll(1,10)
-    h_skl = h_skl + h_roll
-    e_mgk = 10 + e_skl + e_str
-    e_str = e_str + e_roll
-    e_skl = e_skl + e_roll
+    h_skl = h_skl_o + h_roll
+    e_mgk = 10 + e_skl_o + e_str_o
+    e_str = e_str_o + e_roll
+    e_skl = e_skl_o + e_roll
     damage_value = 0
     loser = ''
         
@@ -102,11 +106,12 @@ def skl_action(opt,h_str,h_skl,h_mgk,e_str,e_skl,e_mgk):
         if(h_skl > e_str):
             damage_value = 10
             loser = 'e'
-        elif(h_str < e_str):
+        elif(h_skl < e_str):
             damage_value = 10
             loser = 'h'
             
     elif(opt == 3):
+        e_roll = 'm'
         if(h_skl > e_mgk):
             damage_value = h_skl - e_mgk
             loser = 'e'
@@ -116,23 +121,27 @@ def skl_action(opt,h_str,h_skl,h_mgk,e_str,e_skl,e_mgk):
             
     else:
         damage_value = 0
+    
+    if(e_str_o == 0 and e_skl_o == 0):
+        e_roll = 'h'
          
     return loser , damage_value,h_roll,e_roll
 
 #opt 1 -> mgk x mgk | opt 2 -> mgk x str | opt 3 -> mgk x skl
-def mgk_action(opt,h_str,h_skl,h_mgk,e_str,e_skl,e_mgk):
+def mgk_action(opt,h_str_o,h_skl_o,h_mgk_o,e_str_o,e_skl_o,e_mgk_o):
     print('mgk works')
     h_roll = dice_roll(1,10)
     e_roll = dice_roll(1,10)
-    h_mgk = 10 + h_skl + h_str
-    e_mgk = 10 + e_skl + e_str
-    e_str = e_str + e_roll
-    e_skl = e_skl + e_roll
+    h_mgk = 10 + h_str_o + h_skl_o
+    e_mgk = 10 + e_skl_o + e_str_o
+    e_str = e_str_o + e_roll
+    e_skl = e_skl_o + e_roll
     damage_value = 0
     loser = ''
         
     if(opt == 1):
         if(h_mgk > e_mgk):
+            e_roll = 'm'
             damage_value = h_mgk - e_mgk
             loser = 'e'
         elif(h_mgk < e_mgk):
@@ -151,15 +160,17 @@ def mgk_action(opt,h_str,h_skl,h_mgk,e_str,e_skl,e_mgk):
         if(h_mgk > e_skl):
             damage_value = 15
             loser = 'e'
-        elif(h_skl < e_skl):
+        elif(h_mgk < e_skl):
             damage_value = 15
             loser = 'h'
             
     else:
         damage_value = 0
+        
+    if(e_str_o == 0 and e_skl_o == 0):
+        e_roll = 'h'
           
     return loser,damage_value,h_roll,e_roll
-
 
 def heal_action(life,mgk):
     heal_dice = dice_roll(1,10)
@@ -241,7 +252,7 @@ def battle_response(action,h_life,h_str,h_skl,h_mgk,e_life,e_str,e_skl,e_mgk,e_n
     
     
     if not over:
-        if(e_next_roll =='HEAL'):
+        if(e_next_roll == 'HEAL'):
             if(action == 0 ):
                 e_heal_value = heal_action(e_life,e_mgk)
                 result =  str_action(1,h_str,h_skl,h_mgk,0,0,e_mgk)
@@ -254,6 +265,7 @@ def battle_response(action,h_life,h_str,h_skl,h_mgk,e_life,e_str,e_skl,e_mgk,e_n
             elif(action == 3):
                 h_heal_value = heal_action(h_life,h_mgk)
                 e_heal_value = heal_action(e_life,e_mgk)
+                result = ("",0,0,'h')
                 
         else:
             if(action == 0 ):

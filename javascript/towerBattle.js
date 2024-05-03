@@ -7,6 +7,7 @@ const hLife = document.getElementById("heroLife")
 const hStrength = document.getElementById("heroStrength")
 const hSkill = document.getElementById("heroSkill")
 const hMagicka = document.getElementById("heroMagicka")
+const hDice = document.getElementById('heroAction')
 
     //Tower Elements
 const eNextAtk = document.getElementById("enemyRoll")
@@ -20,6 +21,7 @@ const eLife = document.getElementById("enemyLife")
 const eStrength = document.getElementById("enemyStrength")
 const eSkill = document.getElementById("enemySkill")
 const eMagicka = document.getElementById("enemyMagicka")
+const eDice = document.getElementById('enemyAction')
 
 //Setting Enemy first Attack Type
 function updateFirstAtk(data){ 
@@ -92,17 +94,21 @@ function gameOver(data){
     }
 }
 
+async function damageVQ(value, cLife) {
+    for (let i = 0; i <= value - 1; i++) {
+        await new Promise(resolve => {
+            setTimeout(() => {
+                cLife.innerText = parseInt(cLife.innerText) - 1;
+                resolve();
+            }, 250);
+        });
+    }
+}
 function updateBattle(data){ 
     gameOver(data)
 
     hLife.innerText = parseInt(hLife.innerText) + data['hHeal']
     eLife.innerText = parseInt(eLife.innerText) + data['eHeal']
-
-    if(data['loser'] == 'h'){
-        hLife.innerText = parseInt(hLife.innerText) - data['damageValue']
-    }else{
-        eLife.innerText = parseInt(eLife.innerText) - data['damageValue']
-    }
 
     eNextAtk.innerText =  data['nextRoll']
 
@@ -111,6 +117,43 @@ function updateBattle(data){
     }
     
     turn.innerText = parseInt(turn.innerText) + 1
+
+    if(data['loser'] == 'h'){
+        damageVQ(data['damageValue'],hLife)
+    }else{
+        damageVQ(data['damageValue'],eLife)
+    }
+}
+
+function updateDice(hOpt,data){
+
+    if(data['damageValue'] == 0 && hOpt != 'h' && eNextAtk.innerText != 'HEAL' ){
+        hDice.setAttribute('src','./assets/ActionsDices/block.gif');
+        eDice.setAttribute('src','./assets/ActionsDices/block.gif')
+    }else{
+        switch (hOpt){
+            case 'h':
+                hDice.setAttribute('src','./assets/ActionsDices/heal.gif');
+                break;
+            case 'm':
+                hDice.setAttribute('src','./assets/ActionsDices/mgk.gif');
+                break;
+            default:
+                hDice.setAttribute('src',`./assets/ActionsDices/dice${data['hRoll']}.png`)
+                break;}
+
+            switch (data['eRoll']){
+                case 'h':
+                    eDice.setAttribute('src','./assets/ActionsDices/heal.gif');
+                    break;
+                case 'm':
+                    eDice.setAttribute('src','./assets/ActionsDices/emgk.gif');
+                    break;
+                default:
+                    eDice.setAttribute('src',`./assets/ActionsDices/dice${data['eRoll']}.png`)
+                    break;}}
+
+
 }
 
 function strAtk() {
@@ -128,6 +171,7 @@ function strAtk() {
     })
     .then(data => {
         updateBattle(data)
+        updateDice('n',data)
         console.log(data);
     });
 }
@@ -147,6 +191,7 @@ function sklAtk() {
     })
     .then(data => {
         updateBattle(data)
+        updateDice('n',data)
         console.log(data);
     });
 }
@@ -173,6 +218,7 @@ function mgkAtk() {
         })
         .then(data => {
             updateBattle(data)
+            updateDice('m',data)
             console.log(data);
         });
         hMagicka.innerText = parseInt(hMagicka.innerText) - 1
@@ -198,6 +244,7 @@ function heal() {
     })
     .then(data => {
         updateBattle(data)
+        updateDice('h',data)
         console.log(data);
     });
     hMagicka.innerText = parseInt(hMagicka.innerText) - 1
