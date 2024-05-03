@@ -22,7 +22,12 @@ const eSkill = document.getElementById("enemySkill")
 const eMagicka = document.getElementById("enemyMagicka")
 
 //Setting Enemy first Attack Type
-function updateFirstAtk(data){ eNextAtk.innerText =  data['nextRoll'] }
+function updateFirstAtk(data){ 
+    eNextAtk.innerText =  data['nextRoll'] 
+    if(data['nextRoll'] == 'MAGICKA' || data['nextRoll'] == 'HEAL'){
+        eMagicka.innerText = parseInt(eMagicka.innerText) - 1
+    }
+}
 
 function setFirstAtk() {
     var aType = 0;
@@ -70,7 +75,43 @@ return battleInfo = {
 }
 }
 
-function updateBattle(data){ eNextAtk.innerText =  data['nextRoll'] }
+function gameOver(data){
+    switch(data['loser']){
+        case 'oh':
+            alert('You Died!')
+            window.location.reload
+            break;
+        case 'oe':
+            alert('You Won!')
+            window.location.reload
+            break;
+        case 'ot':
+            alert('Time Out - Too Slow!')
+            window.location.reload
+            break;
+    }
+}
+
+function updateBattle(data){ 
+    gameOver(data)
+
+    hLife.innerText = parseInt(hLife.innerText) + data['hHeal']
+    eLife.innerText = parseInt(eLife.innerText) + data['eHeal']
+
+    if(data['loser'] == 'h'){
+        hLife.innerText = parseInt(hLife.innerText) - data['damageValue']
+    }else{
+        eLife.innerText = parseInt(eLife.innerText) - data['damageValue']
+    }
+
+    eNextAtk.innerText =  data['nextRoll']
+
+    if(data['nextRoll'] == 'MAGICKA' || data['nextRoll'] == 'HEAL'){
+        eMagicka.innerText = parseInt(eMagicka.innerText) - 1
+    }
+    
+    turn.innerText = parseInt(turn.innerText) + 1
+}
 
 function strAtk() {
     var aType = 0;
@@ -110,26 +151,39 @@ function sklAtk() {
     });
 }
 
+function mgkCheck(){
+    let isEmpty = false;
+    if(parseInt(hMagicka.innerText) <= 0){isEmpty = true};
+    return isEmpty;
+}
+
 function mgkAtk() {
-    aType = 2;
-    var jsonData = createJson(aType);
-    fetch('/battle', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(jsonData)
-    })
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        updateBattle(data)
-        console.log(data);
-    });
+    if(!mgkCheck()){
+        aType = 2;
+        var jsonData = createJson(aType);
+        fetch('/battle', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jsonData)
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            updateBattle(data)
+            console.log(data);
+        });
+        hMagicka.innerText = parseInt(hMagicka.innerText) - 1
+    }else{
+        alert('Your Magicka Is Over!')
+    }
+  
 }
 
 function heal() {
+    if(!mgkCheck()){
     aType = 3;
     var jsonData = createJson(aType);
     fetch('/battle', {
@@ -146,4 +200,8 @@ function heal() {
         updateBattle(data)
         console.log(data);
     });
+    hMagicka.innerText = parseInt(hMagicka.innerText) - 1
+    }else{
+        alert('Your Magicka Is Over!')
+    }
 }
