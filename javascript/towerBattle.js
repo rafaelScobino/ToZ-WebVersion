@@ -3,6 +3,9 @@ const urlParamsBattle = new URLSearchParams(window.location.search)
 const encodedDataBattle = urlParamsBattle.get('data')
 const dataBattle = encodedDataBattle.split('|')
 
+//Server DNS
+const server = 'http://toz-serverside-env.eba-3vrtsrzz.us-east-1.elasticbeanstalk.com/battle'
+
 const hClass = dataBattle[6] 
 //Getting html elements
 
@@ -40,7 +43,7 @@ function updateFirstAtk(data){
 function setFirstAtk() {
     var aType = 0;
     var jsonData = createJson(aType);
-    fetch('/battle', {
+    fetch(server, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -191,7 +194,7 @@ function updateHeroImg(data){
 function strAtk() {
     var aType = 0;
     var jsonData = createJson(aType);
-    fetch('/battle', {
+    fetch(server, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -212,7 +215,7 @@ function strAtk() {
 function sklAtk() {
     aType = 1;
     var jsonData = createJson(aType);
-    fetch('/battle', {
+    fetch(server, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -240,7 +243,7 @@ function mgkAtk() {
     if(!mgkCheck()){
         aType = 2;
         var jsonData = createJson(aType);
-        fetch('/battle', {
+        fetch(server, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -267,7 +270,7 @@ function heal() {
     if(!mgkCheck()){
     aType = 3;
     var jsonData = createJson(aType);
-    fetch('/battle', {
+    fetch(server, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
