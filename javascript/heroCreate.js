@@ -5,6 +5,7 @@ var heroLife = document.getElementById("heroLife")
 var heroStrength = document.getElementById("heroStrength")
 var heroSkill = document.getElementById("heroSkill")
 var heroMagicka = document.getElementById("heroMagicka")
+var heroClass = ''
 
 function rngSelector (op0,op1,op2,op3,op4,op5,op6,op7,op8,op9){
     const selectorArr = []
@@ -51,7 +52,8 @@ function rangerHero(){
     heroStrength.innerText = 6;
     heroSkill.innerText = 4;
     heroMagicka.innerText = 2;
-    heroImg.setAttribute('src',"./assets/Contestants/Hero/ranger/idle.gif")
+    heroImg.setAttribute('src',"./assets/Contestants/Hero/ranger/idle.gif");
+    heroClass = 'ranger'
 }
 
 function warriorHero(){
@@ -59,7 +61,8 @@ function warriorHero(){
     heroStrength.innerText = 8;
     heroSkill.innerText = 2;
     heroMagicka.innerText = 0;
-    heroImg.setAttribute('src',"./assets/Contestants/Hero/warrior/idle.gif")
+    heroImg.setAttribute('src',"./assets/Contestants/Hero/warrior/idle.gif");
+    heroClass = 'warrior'
 }
 
 function wizardHero(){
@@ -67,7 +70,8 @@ function wizardHero(){
     heroStrength.innerText = 2;
     heroSkill.innerText = 8;
     heroMagicka.innerText = 3;
-    heroImg.setAttribute('src',"./assets/Contestants/Hero/wizard/idle.gif")
+    heroImg.setAttribute('src',"./assets/Contestants/Hero/wizard/idle.gif");
+    heroClass = 'wizard'
 }
 
 function fighterHero(){
@@ -75,7 +79,8 @@ function fighterHero(){
     heroStrength.innerText = 4;
     heroSkill.innerText = 6;
     heroMagicka.innerText = 1;
-    heroImg.setAttribute('src',"./assets/Contestants/Hero/fighter/idle.gif")
+    heroImg.setAttribute('src',"./assets/Contestants/Hero/fighter/idle.gif");
+    heroClass = 'fighter'
 }
 
 function randomHero(){
@@ -101,6 +106,7 @@ function randomHero(){
     heroMagicka.innerText = mgk;
         let random = rngSelector("./assets/Contestants/Hero/ranger/idle.gif","./assets/Contestants/Hero/warrior/idle.gif","./assets/Contestants/Hero/wizard/idle.gif","./assets/Contestants/Hero/fighter/idle.gif")
     heroImg.setAttribute('src',random)
+    heroClass = rngSelector('ranger','wizard','warrior','fighter')
 }
 
 function towerStart(){
@@ -110,7 +116,8 @@ function towerStart(){
     "|" +heroStrength.innerText + 
     "|" +heroSkill.innerText + 
     "|" +heroMagicka.innerText +
-    "|" +heroImg.src
+    "|" +heroImg.src +
+    "|" +heroClass
 
     const targetURL = './tower.html?data=' + encodeURIComponent(heroInfo)
 

@@ -1,3 +1,9 @@
+// Retrieving heroClass URL query param
+const urlParamsBattle = new URLSearchParams(window.location.search)
+const encodedDataBattle = urlParamsBattle.get('data')
+const dataBattle = encodedDataBattle.split('|')
+
+const hClass = dataBattle[6] 
 //Getting html elements
 
     //Hero Elements
@@ -80,14 +86,17 @@ return battleInfo = {
 function gameOver(data){
     switch(data['loser']){
         case 'oh':
+            heroImgPath('die')
             alert('You Died!')
             window.location.reload
             break;
         case 'oe':
+            heroImgPath('jump')
             alert('You Won!')
             window.location.reload
             break;
         case 'ot':
+            heroImgPath('idle')
             alert('Time Out - Too Slow!')
             window.location.reload
             break;
@@ -104,6 +113,7 @@ async function damageVC(value, cLife) {
         });
     }
 }
+
 function updateBattle(data){ 
     gameOver(data)
 
@@ -156,6 +166,28 @@ function updateDice(hOpt,data){
 
 }
 
+function heroImgPath(value){
+    hImg.setAttribute('src',`./assets/Contestants/Hero/${hClass}/${value}.gif`)
+}
+
+function updateHeroImg(data){
+    switch (data['loser']){
+        case 'h':
+            heroImgPath('hit')
+            break;
+        case 'e':
+            if(data['damageValue'] > 10){
+                heroImgPath('atk1')
+            }else{
+                heroImgPath('atk2')
+            }
+            break;};
+        setTimeout(() => {
+            heroImgPath('run')
+            resolve();
+        }, 2500);
+}
+
 function strAtk() {
     var aType = 0;
     var jsonData = createJson(aType);
@@ -172,6 +204,7 @@ function strAtk() {
     .then(data => {
         updateBattle(data)
         updateDice('n',data)
+        updateHeroImg(data)
         console.log(data);
     });
 }
@@ -192,6 +225,7 @@ function sklAtk() {
     .then(data => {
         updateBattle(data)
         updateDice('n',data)
+        updateHeroImg(data)
         console.log(data);
     });
 }
@@ -219,6 +253,7 @@ function mgkAtk() {
         .then(data => {
             updateBattle(data)
             updateDice('m',data)
+            updateHeroImg(data)
             console.log(data);
         });
         hMagicka.innerText = parseInt(hMagicka.innerText) - 1
@@ -245,6 +280,7 @@ function heal() {
     .then(data => {
         updateBattle(data)
         updateDice('h',data)
+        updateHeroImg(data)
         console.log(data);
     });
     hMagicka.innerText = parseInt(hMagicka.innerText) - 1
