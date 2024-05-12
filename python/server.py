@@ -1,7 +1,15 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import battle
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder="")
+
+@app.route('/<path:filename>')
+def static_files(filename):
+    return send_from_directory('static', filename)
+
+@app.route('/tower', methods=['GET'])
+def html():
+    return send_from_directory('', 'tower.html')
 
 @app.route('/battle', methods=['POST','GET'])
 def battle_route():
