@@ -304,9 +304,9 @@ def battle_response(action,h_life,h_str,h_skl,h_mgk,e_life,e_str,e_skl,e_mgk,e_n
                     e_heal_value = heal_action(e_life,e_mgk)
     # oh -> hero life over | oe -> enemy life over | ot -> time out over 
     else:
-        if(h_life < 0):
+        if(h_life <= 0):
             result = ('oh',0,0,0)
-        elif(e_life < 0 ):
+        elif(e_life <= 0 ):
             result = ('oe',0,0,0)
         else:
             result = ('ot',0,0,0)

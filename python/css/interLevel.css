@@ -1,0 +1,70 @@
+html{
+    color: #FF914D ;
+    background-color: black;
+}
+
+/* Custom Font */
+.medievalsharp-regular {
+    font-family: "MedievalSharp", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  
+*{
+    color: #FF914D ;
+    font-size:x-large;
+     /* border: 1px solid white;  */
+}
+
+.hover :hover{
+    cursor: pointer;
+}
+
+.blueColor{
+    color: #00FFB6;
+}
+
+/* orange border */
+.borderOrange{
+    border: 1px solid #FF914D;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20%;
+}
+
+#headerButtons{
+    display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+#headerButtons a{
+    
+}
+
+#headerButtons button{
+    color: #FF914D;
+    background-color: #191970 ;
+}
+
+#towerLevelDiv{
+    width: 50%;
+    display: flex;
+    gap: 10%;
+}
+
+#choiceTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pathsChoice{
+    display: flex;
+    justify-content: space-around;
+}

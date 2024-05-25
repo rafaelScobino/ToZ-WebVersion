@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower Of Zanas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/tower.css">
+    <script src="./javascript/towerBattle.js" defer></script>
+    <script src="./javascript/tbLoadMisc.js" defer></script>
+</head>
+<body class="medievalsharp-regular">
+    <audio controls loop autoplay style="display: none;" >
+        <source src="./assets/sounds/Toz.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <header>
+        <div id="headerButtons">
+            <a href="./index.html" id="menuLink"><button id="menuButton" class="medievalsharp-regular hover" ><span>MAIN MENU</span></button></a>
+            <a href="./heroCreate.html" id="restartLink"><button id="restartButton" class="medievalsharp-regular hover" ><span>RESTART</span></button></a>
+        </div>
+        <div id="towerLevelDiv">
+            <h1>Tower Level</h1>
+        </div>
+        <div>
+            <select onchange="changeLevelBg()" name="" id="bgSelector">
+                <option class="bgOpt" value="0">No BG</option>
+                <option class="bgOpt" value="1">Main Corridor</option>
+                <option class="bgOpt" value="2">La Palisade</option>
+                <option class="bgOpt" value="3">Tower Top</option>
+                <option class="bgOpt" value="4">Tower Entrance</option>
+            </select>
+        </div>
+    </header>
+    <section id="gameInfos">
+        <div class="borderOrange" id="towerInfo">
+            <div>
+                <h3>CURRENT TURN :</h3>
+                <h3 id="turnCounter" class="blueColor">0</h3>
+            </div>
+            <div>
+                <h3>TOWER LEVEL :</h3>
+                <h3 id="tLevel" class="blueColor">0</h3>
+            </div>
+        </div>
+        <div class="borderOrange" id="contestantInfo">
+            <div id="heroNameDiv">
+                <h3 class="blueColor" id="heroName">Hero Name</h3>
+            </div>
+            <div class="" id="enemyRollDiv">
+                <h3>ENEMY ROLL :</h3>
+                <h3  id="enemyRoll" class="blueColor"></h3>
+            </div>
+            <div>
+                <h3 class="blueColor" id="enemyName">Placement Slime</h3>
+            </div>
+        </div>  
+    </section>
+    <section id="battleGui">
+        <div id="levelDisplay" class=" levelBg">
+            <div class="contestantBox" id="heroBox">
+                <img id="heroImg" class="contestantImg" src="./assets/Contestants/Hero/fighter/idle.gif" alt="Hero Img">
+                <img id="heroAction" class="actionImg" src="./assets/ActionsDices/block.gif" alt="Action Indicator Display">
+            </div>
+            <div class="contestantBox" id="enemyBox">
+                <img id="enemyImg" class="contestantImg" src="./assets/Contestants/Enemies/evilSlime/Slime2.gif" alt="Enemy Img">
+                <img id="enemyAction" class="actionImg" src="./assets/ActionsDices/block.gif" alt="Action Indicator Display">
+            </div>
+        </div>
+        <div id="contestantStatsInfoActions">
+            <div id="heroStats" class="contestantStatsBox borderOrange"> 
+                <div class="statsBox">
+                    <h3>LIFE:</h3>
+                    <h3 id="heroLife" class="blueColor">0</h3>
+                </div>
+                <div class="statsBox">
+                    <h3>STRENGTH :</h3>
+                    <h3 id="heroStrength" class="blueColor">0</h3>
+                </div>
+                <div class="statsBox">
+                    <h3>SKILL :</h3>
+                    <h3 id="heroSkill" class="blueColor">0</h3>
+                </div>
+                <div class="statsBox">
+                    <h3>MAGICKA :</h3>
+                    <h3 id="heroMagicka" class="blueColor">0</h3>
+                </div>
+            </div>
+            <div id="enemyStats" class="contestantStatsBox borderOrange">
+                <div class="statsBox">
+                    <h3>LIFE:</h3>
+                    <h3 id="enemyLife" class="blueColor">25</h3>
+                </div>
+                <div class="statsBox">
+                    <h3>STRENGTH :</h3>
+                    <h3 id="enemyStrength" class="blueColor">5</h3>
+                </div>
+                <div class="statsBox">
+                    <h3>SKILL :</h3>
+                    <h3 id="enemySkill" class="blueColor">5</h3>
+                </div>
+                <div class="statsBox">
+                    <h3>MAGICKA :</h3>
+                    <h3 id="enemyMagicka" class="blueColor">2</h3>
+                </div>
+            </div>
+            <div id="actionButtons" class="contestantStatsBox">
+                <button onclick="action(0)" class="hover" ><span>STRENGTH</span></button>
+                <button onclick="action(1)" class="hover"><span>SKILL</span></button>
+                <button onclick="action(2)" class="hover"><span>MAGICKA</span></button>
+                <button onclick="action(3)" class="hover"><span>HEAL</span></button>
+            </div>
+        </div>
+        <div id="gameInventory" class="borderOrange">
+            <img src="./assets/ActionsDices/block.gif" alt="">
+            <h3 class="blueColor">Inventory - NOT IMPLEMENTED</h3>
+            <img src="./assets/ActionsDices/block.gif" alt="">
+        </div>
+        <div id="gameLog" class="borderOrange">
+            <p>This is the game log</p>
+            <p>----------------------------------------------</p>
+        </div> 
+    
+    <footer>
+
+    </footer>
+   
+
+</body>
+</html>

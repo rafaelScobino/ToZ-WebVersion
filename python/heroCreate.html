@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower Of Zanas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/heroCreate.css">
+    <script src="./javascript/heroCreate.js" defer></script>
+</head>
+<body class="medievalsharp-regular">
+    <audio controls loop autoplay style="display: none;" >
+        <source src="./assets/sounds/Toz.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+      <section class="heroMenu" id="heroMenu">
+        <div class="heroMenu" id="titleTextsDiv">
+            <h4 class="titleTexts">TOWER OF ZANAS</h4>
+            <h1 class="titleTexts">HERO CREATION</h1>
+        </div>
+        <div class="heroMenu" id="nameInputDiv">
+            <label for="nameInput">NAME: </label>
+            <input class="medievalsharp-regular" type="text" id="nameInput">
+        </div>
+        <div class="heroMenu" id="heroCreateMenu">
+            <div id="heroStatsDiv">
+                <div><h4>LIFE: </h4><span id="heroLife"></span></div>
+                <div><h4>STRENGTH: </h4><span id="heroStrength"></span></div>
+                <div><h4>SKILL: </h4><span id="heroSkill"></span></div>
+                <div><h4>MAGICKA: </h4><span id="heroMagicka"></span></div>
+            </div>
+            <div id="heroImgDiv">
+                <img id="heroImg" src="" alt="Hero class img">
+            </div>
+            <div id="heroClassDiv">
+                <div onclick="rangerHero()">
+                    <label for="ranger">RANGER</label> 
+                    <input type="radio" name="heroClass" id="ranger">
+                </div>
+                <div onclick="warriorHero()"> <label for="warrior">WARRIOR</label>
+                    <input type="radio" name="heroClass" id="warrior">
+                </div>
+                <div onclick="wizardHero()" > <label for="wizard">WIZARD</label> 
+                    <input type="radio" name="heroClass" id="wizard">
+                </div>
+                <div onclick="fighterHero()" ><label for="fighter">FIGHTER</label>
+                    <input type="radio" name="heroClass" id="fighter">
+                </div>
+                <div onclick="randomHero()">  <label for="random">RANDOM</label>
+                    <input type="radio" name="heroClass" id="random">
+                </div>
+            </div>
+        </div>
+        <div class="heroMenu" id="submitClimb">
+            <button onclick="towerStart()" id="climbButton" class="medievalsharp-regular hover" ><span>CLIMB TOWER!</span></button>
+        </div>
+    </section>
+</body>
+</html>

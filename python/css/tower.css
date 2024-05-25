@@ -1,0 +1,242 @@
+html{
+    color: #FF914D ;
+    background-color: black;
+}
+
+/* Custom Font */
+.medievalsharp-regular {
+    font-family: "MedievalSharp", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* font Color class */
+.blueColor{
+    color: #00FFB6;
+}
+
+/* orange border */
+.borderOrange{
+    border: 1px solid #FF914D;
+}
+
+*{
+    margin:0;
+    color: #FF914D ;
+    font-size: large;
+    font-weight: bolder;
+    /* border: 1px solid white; */
+}
+
+.hover :hover{
+    cursor: pointer;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    gap: 10%;
+    height: 70px;
+}
+
+#headerButtons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10%;
+    height: 80px;
+    width: 50%;
+    margin-left: 2%;
+}
+
+#headerButtons a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 45%;
+    min-width: 100px;
+}
+
+#headerButtons button{
+    height: 60%;
+    width: 100%;
+
+    color: #FF914D;
+    background-color: #191970 ;
+
+    aspect-ratio: 5/1;
+}
+
+#gameInfos h3{
+    margin: 1%;
+}
+
+#towerInfo{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+
+#towerInfo div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5%;
+    width: 30%;
+}
+
+#contestantInfo{
+    margin-top: 0.5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#contestantInfo h3{
+    text-align: center;
+}
+
+#contestantInfo div{
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+
+#enemyRollDiv{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    text-wrap: nowrap;
+    gap: 5%;
+}
+
+#levelDisplay{
+    margin-top: 0.2%;
+    display: flex;
+    flex-wrap: nowrap;
+    max-height: 600px;
+}
+
+.bg1{
+    background-image: url(./../assets/TowerLevels/entrance.gif);
+}
+
+.bg2{
+    background-image: url(./../assets/TowerLevels/laPalisade.gif);
+}
+
+.bg3{
+    background-image: url(./../assets/TowerLevels/top.gif);
+}
+
+.bg4{
+    background-image: url(./../assets/TowerLevels/tutorialpath.gif);
+}
+
+.levelBg{
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+#bgSelector{
+    border: 1px solid #FF914D;
+    color: #00FFB6;
+    background-color: black;
+}
+
+.bgOpt{
+    border: 1px solid #FF914D;
+    background-color: black;
+    color: #00FFB6;
+}
+
+.contestantImg{
+    width: 50%;
+}
+
+#heroImg{
+    transform: translateY(20%);
+    overflow: hidden;
+}
+
+.actionImg{
+    height: 30%;
+    width: 20%;
+}
+
+.contestantBox{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 5%;
+}
+
+#enemyBox{
+    flex-direction: row-reverse;
+}
+
+#contestantStatsInfoActions{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.contestantStatsBox{
+    margin: 0.3%;
+    width: 49%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+}
+
+.statsBox{
+    width: 20%;
+    min-width: 100px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    text-wrap: nowrap;
+    gap: 5%;
+}
+
+#actionButtons button{
+    padding: 1.5%;
+    width: 20%;
+    color: #FF914D;
+    background-color: #191970 ;
+    font-family: "MedievalSharp", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#gameInventory{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+}
+
+#gameInventory h3{
+    text-align: center;
+}
+
+#gameLog{
+    height: 200px;
+    overflow-y: scroll;
+    line-height: 2px;
+}
+
+#gameLog p{
+    padding: 10px;
+    color: #00FFB6;
+}    

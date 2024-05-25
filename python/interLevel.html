@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/interLevel.css">
+    <script src="./javascript/interLevel.js" defer></script>
+</head>
+<body class="medievalsharp-regular">
+    <audio controls loop autoplay style="display: none;" >
+        <source src="./assets/sounds/Toz.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <header>
+        <div id="headerButtons" class="borderOrange">
+            <a href="./index.html" id="menuLink"><button id="menuButton" class="medievalsharp-regular hover" ><span>MAIN MENU</span></button></a>
+            <a href="./heroCreate.html" id="restartLink"><button id="restartButton" class="medievalsharp-regular hover" ><span>RESTART</span></button></a>
+        </div>
+        <div id="towerLevelDiv" class="borderOrange">
+            <h3>TOWER LEVEL :</h3>
+            <h3 id="tLevel" class="blueColor">0</h3>
+        </div>
+    </header>
+    <div id="choiceTitle">
+        <h1>Choose Your Fate !</h1>
+    </div>
+    <div id="pathsChoice" class="borderOrange">
+        <a href="./tower.html"><img class="borderOrange" src="./assets/Other/eliteDoor.png" alt=""></a>
+        <a href="./tower.html"><img class="borderOrange" src="./assets/Other/itemDoor.png" alt=""></a>
+        <a href="./tower.html"><img class="borderOrange" src="./assets/Other/rndDoor.png" alt=""></a>
+    </div>
+
+</body>
+</html>
