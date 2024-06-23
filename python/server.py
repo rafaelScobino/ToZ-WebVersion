@@ -1,11 +1,16 @@
 from flask import Flask, request, jsonify, send_from_directory
-import battle
+import battle,dbtesting
 
 app = Flask(__name__,static_folder="")
 
 @app.route('/<path:filename>')
 def static_files(filename):
     return send_from_directory('static', filename)
+
+@app.route('/dbtesting', methods=['POST','GET'])
+def query_rout():
+    
+
 
 @app.route('/tower', methods=['GET'])
 def html():
