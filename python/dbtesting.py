@@ -9,7 +9,4 @@ def insert_name_email(name,email):
     cur.execute(query_string,(name,email))
     db.commit()
 
-insert_name_email("Teste Name","Teste Email")
 
-cur.close()
-db.close()

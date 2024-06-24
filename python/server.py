@@ -1,5 +1,18 @@
 from flask import Flask, request, jsonify, send_from_directory
-import battle,dbtesting
+import battle
+import sqlite3
+
+
+
+def insert_name_email(name,email):
+    db = sqlite3.connect("test.db")
+    cur = db.cursor()
+    
+    query_string ="INSERT INTO email (name,email) VALUES (?,?)" 
+    cur.execute(query_string,(name,email))
+    db.commit()
+
+
 
 app = Flask(__name__,static_folder="")
 
@@ -7,11 +20,19 @@ app = Flask(__name__,static_folder="")
 def static_files(filename):
     return send_from_directory('static', filename)
 
-@app.route('/dbtesting', methods=['POST','GET'])
-def query_rout():
+@app.route('/db_post', methods=['POST','GET'])
+def query_route():
+    info = request.json
     
-
-
+    user_name = info['name']
+    user_email = info['email'] 
+    jsonify(insert_name_email(user_name,user_email))
+    return "Succesful"
+    
+@app.route('/dbtesting_get', methods=['POST','GET'])
+#def query_get_route():
+    
+    
 @app.route('/tower', methods=['GET'])
 def html():
     return send_from_directory('', 'tower.html')
