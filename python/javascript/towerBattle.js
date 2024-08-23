@@ -22,6 +22,7 @@ const hDice = document.getElementById('heroAction')
 const eNextAtk = document.getElementById("enemyRoll")
 const turn = document.getElementById("turnCounter")
 const tLevel = document.getElementById("tLevel")
+const nextEnBt = document.getElementById("nextEnBt")
 
     //Enemy elements
 const eName = document.getElementById('enemyName')
@@ -34,6 +35,13 @@ const eDice = document.getElementById('enemyAction')
 
 //Retrieving console HTML element
 const gameConLog = document.getElementById('gameLog')
+
+//Next Enemy function
+function nextEnFn(){
+   console.log('Function works')
+}
+
+nextEnBt.addEventListener('click',nextEnFn)
 
 //Setting Enemy first Attack Type
 function updateFirstAtk(data){ 
@@ -61,7 +69,7 @@ function setFirstAtk() {
         console.log(data);
     });}
 
-document.addEventListener(window.onload = setFirstAtk(),"")
+document.addEventListener(window.onload = setFirstAtk() ,"")
 
 //Setting Action Type
 // 0-> Strength | 1-> Skill | 2->Magicka | 3-> Heal | 4-> Inventory
@@ -99,8 +107,9 @@ function gameOver(data){
         case 'oe':
             heroImgPath('jump')
             alert('You Won!')
-            window.location.href = './../interLevel.html'
-            window.location.reload
+            nextEnBt.style.display = 'block'
+            //window.location.href = './../interLevel.html'
+            //window.location.reload
             break;
         case 'ot':
             heroImgPath('idle')
