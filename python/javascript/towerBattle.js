@@ -296,13 +296,13 @@ function levelUp(choice){
             hLife.innerText = parseInt(hLife.innerText) + 25;
             break;
         case 1:
-            hStrength = parseInt(hStrength.innerText) + 2;
+            hStrength.innerText = parseInt(hStrength.innerText) + 2;
             break;
         case 2:
-            hSkill = parseInt(hSkill.innerText) + 2;
+            hSkill.innerText = parseInt(hSkill.innerText) + 2;
             break;
         case 3:
-            hMagicka = parseInt(hMagicka.innerText) + 3;
+            hMagicka.innerText = parseInt(hMagicka.innerText) + 3;
             break;
     }
     levelUpDiv.style.display = 'none'
