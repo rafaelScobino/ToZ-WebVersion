@@ -3,7 +3,7 @@ from flask import jsonify
 
 def dice_roll(x,y):
     dice = random.randint(x,y)
-    print(dice)
+    print("Dice Result: " + str(dice))
     return dice
 
 def e_next_roll_type(e_life,e_str,e_skl,e_mgk):
@@ -39,7 +39,7 @@ def e_next_roll_type(e_life,e_str,e_skl,e_mgk):
 
 #opt 1 -> str x str | opt 2 -> str x skl | opt 3 -> str x mgk
 def str_action(opt,h_str_o,h_skl_o,h_mgk_o,e_str_o,e_skl_o,e_mgk_o):
-    print('str works')
+    #print('str works')
     h_roll = dice_roll(1,10)
     e_roll = dice_roll(1,10)
     h_str = h_str_o + h_roll
@@ -84,7 +84,7 @@ def str_action(opt,h_str_o,h_skl_o,h_mgk_o,e_str_o,e_skl_o,e_mgk_o):
 
 #opt 1 -> skl x skl | opt 2 -> skl x str | opt 3 -> skl x mgk
 def skl_action(opt,h_str_o,h_skl_o,h_mgk_o,e_str_o,e_skl_o,e_mgk_o):
-    print('skl works')
+    #print('skl works')
     h_roll = dice_roll(1,10)
     e_roll = dice_roll(1,10)
     h_skl = h_skl_o + h_roll
@@ -129,7 +129,7 @@ def skl_action(opt,h_str_o,h_skl_o,h_mgk_o,e_str_o,e_skl_o,e_mgk_o):
 
 #opt 1 -> mgk x mgk | opt 2 -> mgk x str | opt 3 -> mgk x skl
 def mgk_action(opt,h_str_o,h_skl_o,h_mgk_o,e_str_o,e_skl_o,e_mgk_o):
-    print('mgk works')
+    #print('mgk works')
     h_roll = dice_roll(1,10)
     e_roll = dice_roll(1,10)
     h_mgk = 10 + h_str_o + h_skl_o
@@ -243,7 +243,7 @@ def game_over(h_life,e_life,turn):
 
 
 def battle_response(action,h_life,h_str,h_skl,h_mgk,e_life,e_str,e_skl,e_mgk,e_next_roll,turn,t_level):
-    print('br works')
+    #print('br works')
     h_heal_value = 0
     e_heal_value = 0
     result = ("",0,0,0)
@@ -315,7 +315,7 @@ def battle_response(action,h_life,h_str,h_skl,h_mgk,e_life,e_str,e_skl,e_mgk,e_n
                    h_heal_value,e_heal_value,
                    next_roll)
     
-    print(result_tuple)
+    #print(result_tuple)
     return result_tuple
 
 def request_handler(action,h_life,h_str,h_skl,h_mgk,e_life,e_str,e_skl,e_mgk,e_next_roll,turn,t_level):
@@ -334,7 +334,7 @@ def request_handler(action,h_life,h_str,h_skl,h_mgk,e_life,e_str,e_skl,e_mgk,e_n
         
     }
 
-    json_string = json.dumps(response_json)
+    json.dumps(response_json)
                        
 
     return response_json  

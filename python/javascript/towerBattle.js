@@ -23,6 +23,7 @@ const eNextAtk = document.getElementById("enemyRoll")
 const turn = document.getElementById("turnCounter")
 const tLevel = document.getElementById("tLevel")
 const nextEnBt = document.getElementById("nextEnBt")
+const levelUpDiv = document.getElementById("level-up-container")
 
     //Enemy elements
 const eName = document.getElementById('enemyName')
@@ -35,13 +36,6 @@ const eDice = document.getElementById('enemyAction')
 
 //Retrieving console HTML element
 const gameConLog = document.getElementById('gameLog')
-
-//Next Enemy function
-function nextEnFn(){
-   console.log('Function works')
-}
-
-nextEnBt.addEventListener('click',nextEnFn)
 
 //Setting Enemy first Attack Type
 function updateFirstAtk(data){ 
@@ -119,6 +113,7 @@ function gameOver(data){
     }
 }
 
+//Function to update char's life
 async function damageVC(value, cLife) {
     for (let i = 0; i <= value - 1; i++) {
         await new Promise(resolve => {
@@ -178,8 +173,6 @@ function updateDice(hOpt,data){
                 default:
                     eDice.setAttribute('src',`./assets/ActionsDices/dice${data['eRoll']}.png`)
                     break;}}
-
-
 }
 
 function heroImgPath(value){
@@ -270,3 +263,48 @@ function action(value) {
     }else{actionRequest(value)};
 }
 
+//Function to define and return next enemy based on tower level
+function nextEnemy(){
+    let value =  parseInt(tLevel.innerText)
+    tLevel.innerText =  value + 1;
+    let data = {t_level: value}
+    fetch('/next',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        eLife.innerText = data['e_life'];
+        eStrength.innerText = data['e_str'];
+        eSkill.innerText = data['e_skl'];
+        eMagicka.innerText = data['e_mgk'];
+        setFirstAtk()
+        nextEnBt.style.display = 'none'
+        levelUpDiv.style.display = 'flex'
+        turn.innerText = 0
+    })
+}
+
+function levelUp(choice){
+    switch (choice){
+        case 0:
+            hLife.innerText = parseInt(hLife.innerText) + 25;
+            break;
+        case 1:
+            hStrength = parseInt(hStrength.innerText) + 2;
+            break;
+        case 2:
+            hSkill = parseInt(hSkill.innerText) + 2;
+            break;
+        case 3:
+            hMagicka = parseInt(hMagicka.innerText) + 3;
+            break;
+    }
+    levelUpDiv.style.display = 'none'
+
+}

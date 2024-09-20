@@ -24,6 +24,17 @@
         <div id="towerLevelDiv">
             <h1>Tower Level</h1>
         </div>
+                <div id="level-up-container">
+                    <div id="level-up-div">
+                        <h1>CHOOSE YOUR LEVEL UP :</h1>
+                        <div id="level-up-btns">
+                            <button onclick="levelUp(0)">Life + 25</button>
+                            <button onclick="levelUp(1)">Strength + 2</button>
+                            <button onclick="levelUp(2)">Skill + 2</button>
+                            <button onclick="levelUp(3)">Magicka + 3</button>
+                        </div>
+                    </div>
+                </div>
         <div>
             <select onchange="changeLevelBg()" name="" id="bgSelector">
                 <option class="bgOpt" value="0">No BG</option>
@@ -65,7 +76,7 @@
                 <img id="heroAction" class="actionImg" src="./assets/ActionsDices/block.gif" alt="Action Indicator Display">
             </div>
 
-                                    <button id="nextEnBt" style="display: none;">Next Enemy</button>
+                                    <button id="nextEnBt" onclick="nextEnemy()" style="display: none;">Next Enemy</button>
 
             <div class="contestantBox" id="enemyBox">
                 <img id="enemyImg" class="contestantImg" src="./assets/Contestants/Enemies/evilSlime/Slime2.gif" alt="Enemy Img">
@@ -109,7 +120,7 @@
                     <h3 id="enemyMagicka" class="blueColor">2</h3>
                 </div>
             </div>
-            <div id="actionButtons" class="contestantStatsBox">
+            <div id="actionButtons">
                 <button onclick="action(0)" class="hover" ><span>STRENGTH</span></button>
                 <button onclick="action(1)" class="hover"><span>SKILL</span></button>
                 <button onclick="action(2)" class="hover"><span>MAGICKA</span></button>

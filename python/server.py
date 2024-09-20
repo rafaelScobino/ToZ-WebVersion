@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 import battle
+import next_enemy
 #import sqlite3
 
 
@@ -58,10 +59,14 @@ def battle_route():
         
     return jsonify(battle.request_handler(action,h_life,h_str,h_skl,h_mgk,e_life,e_str,e_skl,e_mgk,e_next_roll,turn,t_level))
 
-@app.route('/nextEn',methods=['POST','GET'])
-def next_enemy():
+@app.route('/next',methods=['POST','GET'])
+def next_en():
     
-    return jsonify()
+    data = request.json
+    
+    t_level = data['t_level']
+    
+    return jsonify(next_enemy.enemy_request(t_level))
         
 if __name__ =='__main__':
     app.run()

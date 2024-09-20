@@ -26,6 +26,7 @@ html{
     font-size: large;
     font-weight: bolder;
     /* border: 1px solid white; */
+    font-size: clamp(14px,5vw,20px);
 }
 
 .hover :hover{
@@ -147,6 +148,7 @@ header{
     border: 1px solid #FF914D;
     color: #00FFB6;
     background-color: black;
+    width: 80%;
 }
 
 .bgOpt{
@@ -209,14 +211,29 @@ header{
     gap: 5%;
 }
 
+#actionButtons{
+    margin: 0.3%;
+    width: 49%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+}
+
 #actionButtons button{
     padding: 1.5%;
     width: 20%;
+    min-width: fit-content;
     color: #FF914D;
     background-color: #191970 ;
     font-family: "MedievalSharp", cursive;
     font-weight: 400;
     font-style: normal;
+}
+
+#actionButtons span{
+    padding: 2%;
 }
 
 #gameInventory{
@@ -239,4 +256,51 @@ header{
 #gameLog p{
     padding: 10px;
     color: #00FFB6;
-}    
+}
+
+#nextEnBt{
+    background-color: #191970;
+}
+
+#level-up-container{
+    display: none;
+    flex-direction: column;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:1;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(1,1,1,0.4);
+}
+
+#level-up-div{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    min-width: fit-content;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    font-weight: bolder;
+    border: 1px solid #FF914D;
+    background-color:darkslategrey;
+}
+
+#level-up-btns{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+#level-up-div button{
+    background-color: #191970;
+}
